@@ -1,0 +1,44 @@
+#compdef samtools
+#autoload
+
+# samtools zsh completion
+#
+# samtools 1.2
+# Using htslib 1.2.1
+
+local -a _1st_arguments
+_1st_arguments=(
+    "faidx:index/extract FASTA"
+    "index:index alignment"
+    "calmd:recalculate MD/NM tags and '=' bases"
+    "fixmate:fix mate information"
+    "reheader:replace BAM header"
+    "rmdup:remove PCR duplicates"
+    "targetcut:cut fosmid regions (for fosmid pool only)"
+    "bamshuf:shuffle and group alignments by name"
+    "cat:concatenate BAMs"
+    "merge:merge sorted alignments"
+    "mpileup:multi-way pileup"
+    "sort:sort alignment file"
+    "split:splits a file by read group"
+    "bam2fq:converts a BAM to a FASTQ"
+    "bedcov:read depth per BED region"
+    "depth:compute the depth"
+    "flagstat:simple stats"
+    "idxstats:BAM index stats"
+    "phase:phase heterozygotes"
+    "stats:generate stats (former bamcheck)"
+    "flags:explain BAM flags"
+    "tview:text alignment viewer"
+    "view:SAM<->BAM<->CRAM conversion"
+)
+
+_arguments \
+	'*:: :->subcmds' && return 0
+
+if (( CURRENT == 1 )); then
+    _describe -t commands "samtools subcommand" _1st_arguments
+    return
+fi
+
+_files
